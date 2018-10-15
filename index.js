@@ -18,25 +18,23 @@ const GetNewsHandler = {
     const request = handlerInput.requestEnvelope.request;
     return (request.type === 'IntentRequest'
         && request.intent.name === 'NewsIntent');
-      
   },
   async handle(handlerInput) {
-	var headlessService = new UmbracoHeadless.HeadlessService(config);
+	const headlessService = new UmbracoHeadless.HeadlessService(config);
     await headlessService.authenticate();
     
 	var newsRoot = await headlessService.getById(1053);
 	var newsList = await headlessService.getChildren(newsRoot)
-  let speechOutput = '';
+	let speechOutput = '';
 	for(var i=0;i<newsList.totalResults;i++)
 	{
 	    speechOutput += newsList.results[i].shortIntro;
 	    speechOutput += '. ';
 		
 	}
-	var site = await headlessService.getById(1056);
+	const site = await headlessService.getById(1056);
 	const welcome= site.welcomeMessage;
 	const menuPrompt = site.menuPrompt;
-    const sessionAttributes = {};
 
     return handlerInput.responseBuilder
       .speak(speechOutput)
@@ -90,11 +88,10 @@ const GetWelcomeHandler = {
   async handle(handlerInput) {
 	const headlessService = new UmbracoHeadless.HeadlessService(config);
     await headlessService.authenticate();
-	var site = await headlessService.getById(1056);
+	const site = await headlessService.getById(1056);
 	
 	const welcome= site.welcomeMessage;
 	const menuPrompt = site.menuPrompt;
-    const sessionAttributes = {};
     const speechOutput = welcome + menuPrompt;
 
     return handlerInput.responseBuilder
