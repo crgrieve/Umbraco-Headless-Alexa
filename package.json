@@ -1,0 +1,15 @@
+{
+  "name": "crl-umbraco-headless-skill",
+  "version": "2.0.0",
+  "description": "Sample Alexa Skill using Umbraco Headless",
+  "main": "index.js",
+  "keywords": [
+    "alexa",
+    "skill"
+  ],
+  "author": "CRL",
+  "dependencies": {
+    "ask-sdk": "^2.0.0",
+    "umbraco-headless": "^0.1.4"
+  }
+}
