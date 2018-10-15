@@ -152,7 +152,6 @@ exports.handler = skillBuilder
     GetWelcomeHandler,
     GetNewsHandler,
     GetMeetupsHandler,
-    HelpHandler,
     ExitHandler,
     SessionEndedRequestHandler
   )
